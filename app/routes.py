@@ -12,6 +12,11 @@ def index():
 def about():
     return render_template('about.html')
 
+@app.route('/faceRecognize', methods = ['POST'])
+def faceRecognize():
+    # data = request.files['file'].read()
+    return "", 200
+
 
 
 
