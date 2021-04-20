@@ -13,7 +13,7 @@ I will be using [this Flask app](http://code.tutsplus.com/tutorials/an-introduct
 As of [commit f232e60c39fcd480fbabab6308eeaf24f4a9d5ae](https://github.com/Craicerjack/apache-flask/tree/f232e60c39fcd480fbabab6308eeaf24f4a9d5ae)
 The command to run the `Dockerfile` is:
 
-`docker run -d -p 80:80 --name <name> apache-flask`
+`docker run -d -p 80:80 --name fr apache-flask`
 
 Alternatively, you can use docker-compose with:
 
