@@ -1,6 +1,6 @@
 # coding=utf-8
 
-from flask import render_template, flash, redirect, session, url_for, request, g, Markup
+from flask import request, render_template, flash, redirect, session, url_for, request, g, Markup
 from app import app
 
 @app.route('/')
@@ -14,8 +14,15 @@ def about():
 
 @app.route('/faceRecognize', methods = ['POST'])
 def faceRecognize():
-    # data = request.files['file'].read()
-    return "", 200
+    try:
+        data = request.get_data()
+        app.logger.info("/faceRecognize called")
+        f = open("/tmp/fr.jpeg", 'wb')
+        f.write(bytearray(data))
+        f.close()
+        return "", 200
+    except Exception as e:
+        return str(e), 404
 
 
 
