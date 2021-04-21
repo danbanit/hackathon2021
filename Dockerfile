@@ -6,16 +6,17 @@
 # Set the base image
 FROM debian:latest
 
-# File Author / Maintainer
-MAINTAINER Carlos Tighe
-
 RUN apt-get update && apt-get install -y apache2 \
     libapache2-mod-wsgi \
     build-essential \
     python \
-    python-dev\
+    python-dev \
     python-pip \
     vim \
+    # python3-dev \
+    # python3-pip \
+    # mosquitto \
+    # mosquitto-clients \
  && apt-get clean \
  && apt-get autoremove \
  && rm -rf /var/lib/apt/lists/*
@@ -23,6 +24,10 @@ RUN apt-get update && apt-get install -y apache2 \
 # Copy over and install the requirements
 COPY ./app/requirements.txt /var/www/apache-flask/app/requirements.txt
 RUN pip install -r /var/www/apache-flask/app/requirements.txt
+# RUN pip install cmake
+# RUN pip install dlib
+# RUN pip3 install face_recognition
+# RUN pip install paho-mqtt
 
 # Copy over the apache configuration file and enable the site
 COPY ./apache-flask.conf /etc/apache2/sites-available/apache-flask.conf
